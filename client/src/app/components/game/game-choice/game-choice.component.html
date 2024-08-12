@@ -1,0 +1,21 @@
+<div class="choices">
+    <mat-grid-list cols="2" rowHeight="4:1">
+        <mat-grid-tile *ngFor="let choice of getChoices(); let i = index">
+            <mat-card
+                class="choice-button"
+                [class]="baseChoiceClassName + i"
+                [ngClass]="{
+                    selected: isSelected(i),
+                    correct: showResults() && choice.isCorrect,
+                    incorrect: showResults() && !choice.isCorrect,
+                    disabled: getIsLocked()
+                }"
+                (click)="onChoiceSelect(i)"
+            >
+                <p>#{{ i + 1 }}: {{ choice.text }}</p>
+                <mat-icon *ngIf="getIsLocked()" aria-hidden="false" aria-label="Example home icon" fontIcon="lock"></mat-icon>
+                <div class="selected-filter"></div>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

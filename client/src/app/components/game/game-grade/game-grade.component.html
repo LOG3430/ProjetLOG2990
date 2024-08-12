@@ -1,0 +1,14 @@
+<mat-card class="container">
+    <p class="info">Évaluation <b>{{getGradingRequest().gradeIndex}}</b> de <b>{{getGradingRequest().gradeTotal}}</b></p>
+    <div class="player">
+        <mat-icon>person</mat-icon>
+        <p>{{ getGradingRequest().playerName }}</p>
+    </div>
+    <p class="answer">{{ getGradingRequest().answer }}</p>
+    <p class="info">Attribuez une note à cette réponse:</p>
+    <div class="buttons">
+        <button class="button" (click)="gradeAnswer(0)">0%</button>
+        <button class="button" (click)="gradeAnswer(0.5)">50%</button>
+        <button class="button" (click)="gradeAnswer(1)">100%</button>
+    </div>
+</mat-card>

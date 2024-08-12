@@ -1,0 +1,121 @@
+.choices {
+    height: 95%;
+    width: 100%;
+    max-width: 71vw;
+    grid-column: 2;
+    grid-row-start: 3;
+    grid-row-end: 3;
+    margin: auto;
+}
+
+.mat-grid-tile {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    border-radius: 10%;
+}
+
+.choice-button {
+    height: 90%;
+    width: 90%;
+    z-index: 1;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    position: relative;
+    border-top-left-radius: 32px;
+
+    background-color: white;
+}
+
+.choice-button.disabled {
+    cursor: auto;
+}
+
+.choice-button p {
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 0;
+    z-index: 2;
+}
+
+.choice-button mat-icon {
+    z-index: 2;
+}
+
+.selected-filter {
+    height: 100%;
+    position: absolute;
+    right: 0;
+    width: 0;
+    border-top-left-radius: 26px;
+    transition: width 0.2s ease-in-out;
+}
+
+.choice-0 .selected-filter {
+    background: linear-gradient(to right, #ffcccc, #ff9999, #ff6666);
+}
+
+.choice-1 .selected-filter {
+    background: linear-gradient(to right, #ffffcc, #ffff99, #ffff66);
+}
+
+.choice-2 .selected-filter {
+    background: linear-gradient(to right, #ccffcc, #99ff99, #66ff66);
+}
+
+.choice-3 .selected-filter {
+    background: linear-gradient(to right, #cce0ff, #99ccff, #6699ff);
+}
+
+.choice-button:hover:not(.disabled) .selected-filter {
+    width: 10%;
+}
+
+.choice-button.selected .selected-filter {
+    width: 100%;
+}
+
+.choice-button.selected:hover:not(.disabled) .selected-filter {
+    width: 90%;
+}
+
+.choice-button.correct {
+    border: 5px solid green;
+}
+
+.choice-button.incorrect {
+    border: 5px solid red;
+}
+
+.choice-button::after {
+    content: '';
+    font-family: 'Material Icons';
+    font-weight: bold;
+    font-size: 1.375rem;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 2rem;
+    height: 2rem;
+    top: 4px;
+    left: 4px;
+    z-index: 1;
+}
+
+.choice-button.correct::after {
+    content: 'done';
+    color: green;
+}
+
+.choice-button.incorrect::after {
+    content: 'close';
+    color: red;
+}
+
+p {
+    word-break: break-all;
+}

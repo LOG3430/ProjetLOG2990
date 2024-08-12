@@ -1,0 +1,12 @@
+<div class="container background-animated">
+    <div class="content">
+        <app-game-space *ngIf="showQuestions()"></app-game-space>
+        <app-game-timer *ngIf="isTimerOn()"></app-game-timer>
+        <app-waiting-room *ngIf="isWaitingRoom()"></app-waiting-room>
+        <app-results-page *ngIf="isResultsPage()"></app-results-page>
+    </div>
+
+    <app-game-footer *ngIf="shouldDisplayFooter()"> </app-game-footer>
+    <app-chatbox class="chat"></app-chatbox>
+    <app-player-list-box class="player-list" *ngIf="shouldDisplayPlayerBox()"></app-player-list-box>
+</div>

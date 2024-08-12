@@ -1,0 +1,43 @@
+.logo {
+    display: inline-block;
+    max-width: 100%;
+    max-height: 150px;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 4em;
+}
+
+.team-number {
+    font-size: 2em;
+}
+
+.header {
+    text-align: center;
+    margin-top: 20px;
+    padding: auto;
+}
+
+.footer {
+    text-align: center;
+    padding: auto;
+}
+
+.button {
+    align-items: center;
+    font-size: 20px;
+    border-radius: 15px;
+    opacity: 0.8;
+    padding: 50px 100px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

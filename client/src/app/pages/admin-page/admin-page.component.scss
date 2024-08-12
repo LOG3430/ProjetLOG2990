@@ -1,0 +1,12 @@
+.container {
+    min-height: calc(100vh - 6.25rem);
+    height: 100%;
+}
+
+::ng-deep .mat-mdc-tab-group.mat-success .mat-mdc-tab:not(.mat-mdc-tab-disabled).mdc-tab--active .mdc-tab__text-label,
+::ng-deep .mat-mdc-tab-group.mat-success .mat-mdc-tab-link:not(.mat-mdc-tab-disabled).mdc-tab--active .mdc-tab__text-label,
+::ng-deep .mat-mc-tab-nav-bar.mat-success .mat-mdc-tab:not(.mat-mdc-tab-disabled).mdc-tab--active .mdc-tab_text-label,
+::ng-deep .mat-mc-tab-nav-bar.mat-success .mat-mdc-tab-link:not(.mat-mdc-tab-disabled).mdc-tab--active .mdc-tab__text-label {
+    color: black !important;
+    font-weight: 600;
+}

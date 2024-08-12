@@ -1,0 +1,57 @@
+.statistic-container {
+    position: relative;
+    margin: auto;
+    text-align: center;
+    width: 700px;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 1;
+}
+
+.left-arrow {
+    left: -20px;
+    margin-right: 20px;
+}
+
+.right-arrow {
+    right: -20px;
+    margin-left: 20px;
+}
+
+.histogram-container app-histogram {
+    display: none;
+}
+
+.statistic-container .histogram-active {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+statistic-dot-container {
+    position: relative;
+    margin: auto;
+    text-align: center;
+    width: 700px;
+}
+
+.dot {
+    cursor: pointer;
+    height: 13px;
+    width: 13px;
+    margin: 10px;
+    background-color: black;
+    border-radius: 50%;
+    display: inline-block;
+    transition: opacity 0.6s ease;
+    opacity: 0.5;
+}
+.dot-active,
+.dot:hover {
+    opacity: 1;
+}

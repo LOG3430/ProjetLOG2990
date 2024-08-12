@@ -1,0 +1,15 @@
+<a #downloadComponent></a>
+<div class="container" *ngIf="!isLoading">
+    <app-quiz-admin-list-element
+        *ngFor="let quiz of quizzes"
+        [quiz]="quiz"
+        class="list-element"
+        (deleteQuizSignal)="onDeleteQuiz($event)"
+        (downloadQuizSignal)="onDownloadQuiz(quiz)"
+    ></app-quiz-admin-list-element>
+    <div class="buttons">
+        <button mat-fab extended (click)="addQuiz()" color="primary"><mat-icon>add</mat-icon>Ajouter un quiz</button>
+        <button mat-fab extended (click)="importQuiz()" color="primary"><mat-icon>publish</mat-icon>Importer un quiz</button>
+    </div>
+</div>
+<app-spinner *ngIf="isLoading"></app-spinner>

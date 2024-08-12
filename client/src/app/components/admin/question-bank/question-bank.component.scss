@@ -1,0 +1,38 @@
+.container {
+    padding: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+app-question {
+    width: 90%;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    bottom: 1.7rem;
+    font-size: 1.25rem;
+    z-index: 1;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+#filter-text {
+    font-size: 1.25rem;
+}
+
+#no-question-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+}

@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="flex">
+        <span id="filter-text">Filtres :</span>
+        <mat-chip-listbox aria-label="Fish selection" multiple="true">
+            <mat-chip-option [selected]="showQcm" (click)="toggleShowQcm()"
+                ><mat-icon matChipTrailingIcon>{{ qcmIcon }}</mat-icon
+                >Questions à choix multiples</mat-chip-option
+            >
+            <mat-chip-option [selected]="showQrl" (click)="toggleShowQrl()"
+                ><mat-icon matChipTrailingIcon>{{ qrlIcon }}</mat-icon
+                >Questions à réponse libre</mat-chip-option
+            >
+        </mat-chip-listbox>
+    </div>
+    <ng-container *ngIf="getQuestions().length !== 0">
+        <ng-container *ngFor="let question of getQuestions(); index as i">
+            <app-question
+                [isInBank]="true"
+                [question]="question"
+                [questionIndex]="i"
+                [isEditable]="isEditable"
+                (removeQuestionSignal)="removeQuestion(i)"
+                (saveQuestionSignal)="saveQuestion($event)"
+            >
+                ></app-question
+            >
+        </ng-container>
+    </ng-container>
+    <div *ngIf="getQuestions().length === 0" id="no-question-text">Aucune question trouvée</div>
+    <button *ngIf="isEditable" mat-fab extended (click)="addQuestion()" color="accent"><mat-icon>add</mat-icon>Ajouter une question</button>
+</div>
+
+<app-spinner *ngIf="this.getLoading()"></app-spinner>

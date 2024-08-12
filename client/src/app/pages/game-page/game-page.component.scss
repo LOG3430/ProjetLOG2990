@@ -1,0 +1,33 @@
+.container {
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    height: calc(100vh - 6.25rem);
+    position: relative;
+    overflow-x: hidden;
+}
+
+.content {
+    height: 100%;
+}
+
+.chat {
+    position: absolute;
+    left: 0;
+    top: 40%;
+    transform: translate(-100%, -50%);
+    z-index: 5;
+}
+
+.player-list {
+    position: absolute;
+    right: 0;
+    top: 40%;
+    transform: translate(100%, -50%);
+    z-index: 5;
+}

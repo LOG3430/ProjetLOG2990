@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>Connexion</h1>
+<form>
+    <div mat-dialog-content class="form-container">
+        <mat-form-field id="password-form" appearance="fill">
+            <mat-label>Mot de passe</mat-label>
+            <input
+                matInput
+                #passwordInput
+                type="password"
+                name="password"
+                (keyup.enter)="onSubmit()"
+                required
+                [formControl]="inputValue"
+                color="primary"
+            />
+            <mat-error *ngIf="errorMessage">{{ errorMessage }}</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div mat-dialog-actions class="button-container">
+        <button mat-raised-button mat-dialog-close color="accent">Annuler</button>
+        <button mat-raised-button cdkFocusInitial color="primary" (click)="onSubmit()">Valider</button>
+    </div>
+</form>

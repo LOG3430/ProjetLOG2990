@@ -1,0 +1,22 @@
+<div class="background-animated flex-overflow">
+    <div class="header-container">
+        <header class="room-code">Code : {{ roomId }}</header>
+        <button
+            *ngIf="getIsOrganizer()"
+            mat-icon-button
+            (click)="toggleLockRoom()"
+            aria-label="Lock/Unlock Room"
+            matTooltip="Verrouiller/Déverrouiller la salle"
+        >
+            <mat-icon>{{ getIsRoomLocked() ? 'lock' : 'lock_open' }}</mat-icon>
+        </button>
+    </div>
+    <div class="upper-container">
+        <app-player-list></app-player-list>
+    </div>
+    <div *ngIf="getIsOrganizer()" class="button-container" [matTooltip]="getTooltipMessage()">
+        <button mat-raised-button class="button-box-play" (click)="startTheQuiz()" color="primary" [disabled]="!canStartQuiz()">
+            Commencer la partie
+        </button>
+    </div>
+</div>

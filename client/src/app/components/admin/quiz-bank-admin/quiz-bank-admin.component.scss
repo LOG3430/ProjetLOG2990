@@ -1,0 +1,39 @@
+mat-drawer {
+    width: 75%;
+}
+
+mat-drawer-content {
+    margin: 0;
+}
+
+.container {
+    height: 100%;
+}
+
+#save-button {
+    position: absolute;
+    right: 0;
+    margin: 1rem;
+}
+
+#open-close-arrow {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    margin: 1rem;
+    cursor: pointer;
+}
+
+#content {
+    width: 95%;
+    position: relative;
+}
+
+h1 {
+    text-align: center;
+}
+
+#back-button {
+    position: relative;
+    margin: 1rem;
+}

@@ -1,0 +1,10 @@
+<mat-card class="container" [ngClass]="{ visible: isPlayerListVisible }">
+    <mat-card-header class="player-header"> Joueurs </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+        <app-player-list></app-player-list>
+    </mat-card-content>
+    <button mat-icon-button (keydown.enter)="$event.preventDefault()" class="player-list-button" (click)="togglePlayerListVisibility()">
+        <mat-icon>group</mat-icon>
+    </button>
+</mat-card>

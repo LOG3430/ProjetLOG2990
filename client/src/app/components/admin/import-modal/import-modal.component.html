@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>Choisissez un fichier JSON valide</h2>
+<mat-dialog-content>
+    <button type="button" mat-raised-button (click)="fileInput.click()">Choisir un fichier</button>
+    <input hidden (change)="onFileSelected($event)" #fileInput type="file" accept="application/json" /> 
+    <span class="file-name">{{ selectedFile?.name }}</span>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="undefined">Annuler</button>
+    <button mat-button [mat-dialog-close]="selectedFile" [disabled]="!selectedFile">Importer</button>
+</mat-dialog-actions>

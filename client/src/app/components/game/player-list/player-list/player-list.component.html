@@ -1,0 +1,31 @@
+<div *ngIf="getIsInGame() && getIsOrganizer()" class="sort-menu">
+    <button mat-icon-button [matMenuTriggerFor]="sortMenu">
+        <mat-icon>filter_list</mat-icon>
+    </button>
+    <mat-menu #sortMenu="matMenu">
+        <button
+            mat-menu-item
+            *ngFor="let sortOrder of sortOrders"
+            [ngClass]="{ highlighted: selectedSortOrder === sortOrder.value }"
+            (click)="changeSortOrder(sortOrder.value)"
+        >
+            <mat-icon>{{ sortOrder.icon }}</mat-icon>
+            <span>{{ sortOrder.text }}</span>
+        </button>
+    </mat-menu>
+</div>
+
+<div class="player-list-container" [ngClass]="{ 'in-game': getIsInGame() }">
+    <app-player-list-element
+        *ngFor="let player of getPlayerList()"
+        [name]="player.name"
+        class="list-element"
+        [score]="player.score"
+        [rank]="getPlayerRank(player.name)"
+        [hasLeft]="player.hasLeft"
+        [isMuted]="player.isMuted"
+        [bonusTimes]="player.bonusTimes"
+        [hasLockedAnswer]="player.hasLockedAnswer"
+        [hasInteracted]="player.hasInteracted"
+    ></app-player-list-element>
+</div>

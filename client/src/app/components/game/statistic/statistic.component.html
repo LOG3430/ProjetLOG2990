@@ -1,0 +1,31 @@
+<div class="statistic-container">
+    <button *ngIf="canNavigateLeft()" mat-icon-button matTooltip="Question précédente" class="arrow left-arrow" (click)="navigateLeft()">
+        <mat-icon>chevron_left</mat-icon>
+    </button>
+
+    <div class="histogram-container">
+        <div *ngFor="let histogramValues of getHistory().totalSelectedChoicesHistory; let i = index">
+            <h2 *ngIf="isHistogramActive(i)">{{ getHistory().questionHistory[i] }}</h2>
+            <app-histogram
+                class="histogram-active"
+                *ngIf="isHistogramActive(i)"
+                [histogramValues]="histogramValues"
+                [histogramTexts]="getHistory().histogramTextsHistory[i]"
+                [histogramRightAnswers]="getHistory().rightAnswerHistory[i]"
+            ></app-histogram>
+        </div>
+    </div>
+
+    <button *ngIf="canNavigateRight()" mat-icon-button matTooltip="Question suivante" class="arrow right-arrow" (click)="navigateRight()">
+        <mat-icon>chevron_right</mat-icon>
+    </button>
+
+    <div class="statistic-dot-container">
+        <span
+            *ngFor="let dot of getHistory().totalSelectedChoicesHistory; let i = index"
+            class="dot"
+            [ngClass]="{ 'dot-active': selectedIndex === i }"
+            (click)="selectHistogram(i)"
+        ></span>
+    </div>
+</div>

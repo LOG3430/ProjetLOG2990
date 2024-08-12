@@ -1,0 +1,21 @@
+<div class="background-animated flex">
+    <div class="header">
+        <img class="logo" src="assets/logo.png" alt="BrainBurst logo" />
+        <h1>BrainBurst Quiz!</h1>
+    </div>
+
+    <section>
+        <div class="button-container">
+            <button mat-raised-button class="button" (click)="openDialog(0, 0)">Joindre une partie</button>
+            <button mat-raised-button class="button" [routerLink]="gameCreationPath">Créer une partie</button>
+            <button mat-raised-button class="button" [routerLink]="adminPath">Administrer les jeux</button>
+        </div>
+    </section>
+
+    <div class="footer">
+        <div class="content has-text-centered">
+            <strong class="team-number">Équipe 203</strong>
+            <p>Personn #1, Personn #2, Personn #3, Personn #4, Personn #5 et Personn #6</p>
+        </div>
+    </div>
+</div>

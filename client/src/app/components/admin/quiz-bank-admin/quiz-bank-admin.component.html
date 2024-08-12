@@ -1,0 +1,13 @@
+<mat-drawer-container class="container">
+    <mat-drawer #drawer [mode]="'over'" [position]="'end'">
+        <h1>Banque de questions</h1>
+        <app-question-bank></app-question-bank>
+    </mat-drawer>
+    <mat-drawer-content id="content-container">
+        <div id="content">
+            <button mat-raised-button (click)="exitToAdminPage()" id="back-button"><mat-icon>arrow_back</mat-icon></button>
+            <app-quiz (openDrawerSignal)="openDrawer()"></app-quiz>
+        </div>
+        <mat-icon id="open-close-arrow" (click)="drawer.toggle()"> keyboard_arrow_left</mat-icon>
+    </mat-drawer-content>
+</mat-drawer-container>

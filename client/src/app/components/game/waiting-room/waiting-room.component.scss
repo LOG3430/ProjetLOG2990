@@ -1,0 +1,84 @@
+.flex-overflow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    height: calc(100vh - 6.25rem);
+}
+
+.upper-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+}
+
+.chatbox-container {
+    height: 100%;
+    flex: 1;
+    margin-left: 5vw;
+    margin-right: 10vh;
+}
+
+.chatbox-container.chatbox-hidden {
+    flex: 0.1;
+}
+
+.button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 6vh;
+    height: 10vh;
+}
+
+.mat-card-text,
+.chatbox {
+    width: 100%;
+}
+
+.button-box-play {
+    width: 80%;
+    height: 100%;
+    font-size: 30px;
+    transform: translateY(-5vh);
+}
+
+.room-code {
+    text-align: center;
+    width: auto;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 5vh auto;
+    padding: 10px 20px;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    position: relative;
+}
+
+button[mat-icon-button] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    width: 100px;
+    height: 100px;
+}
+
+.header-container button[mat-icon-button] mat-icon {
+    font-size: 50px;
+    width: 50px;
+    height: 50px;
+}

@@ -1,0 +1,51 @@
+<div class="content-container" *ngIf="!isLoading">
+    <div class="list-element-container">
+        <app-quiz-creation-list-element
+            *ngIf="showRandomMode()"
+            class="element"
+            (click)="selectRandomQuiz()"
+            [isSelected]="isRandomQuizSelected"
+            [title]="'Mode aléatoire'"
+        ></app-quiz-creation-list-element>
+        <app-quiz-creation-list-element
+            class="element"
+            *ngFor="let quiz of visibleQuizzes"
+            (click)="selectQuiz(quiz)"
+            [isSelected]="selectedQuiz === quiz"
+            [title]="quiz.title"
+        ></app-quiz-creation-list-element>
+        <h1 *ngIf="visibleQuizzes.length === 0">Aucun quiz disponible</h1>
+    </div>
+    <div class="spacer"></div>
+</div>
+
+<div *ngIf="selectedQuiz" class="detail">
+    <h2>{{ selectedQuiz.title }}</h2>
+    <p>{{ selectedQuiz.description }}</p>
+    <p>Nombre de questions: {{ selectedQuiz.questions.length }}</p>
+    <p>Durée des questions à choix multiples: {{ selectedQuiz.duration }} secondes</p>
+    <p *ngFor="let question of selectedQuiz.questions; let i = index" class="questions-container">
+        <mat-icon>{{ isQcm(question) ? qcmIcon : qrlIcon }}</mat-icon> {{ i + 1 }}. {{ question.text }}
+    </p>
+
+    <div *ngIf="selectedQuiz" class="buttons-container">
+        <button mat-raised-button class="button-box" (click)="startQuiz(false)" color="accent">
+            <p class="play-title">Créer une partie</p>
+        </button>
+        <button mat-raised-button class="button-box" color="primary" (click)="startQuiz(true)">
+            <p class="test-title">Tester le jeu</p>
+        </button>
+    </div>
+</div>
+
+<div *ngIf="isRandomQuizSelected" class="detail">
+    <h2>Mode aléatoire</h2>
+    <p>Quiz comportant que des questions à choix multiples choisis aléatoirement</p>
+    <p>Nombre de questions: 5</p>
+    <p>Durée des questions à choix multiples: 20 secondes</p>
+    <div class="buttons-container">
+        <button mat-raised-button class="button-box-play" (click)="startRandomQuiz()" color="accent">
+            <p class="play-title">Créer une partie</p>
+        </button>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+<mat-vertical-stepper [linear]="true" #stepper (animationDone)="onChange()">
+    <mat-step [stepControl]="firstFormGroup">
+        <div [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Entrez le numéro de la partie</ng-template>
+            <mat-form-field class="join-game-form-field">
+                <mat-label>XXXX</mat-label>
+                <input
+                    formControlName="gameId"
+                    matInput
+                    #codeInput
+                    type="text"
+                    [minlength]="codeMaxLength"
+                    [maxlength]="codeMaxLength"
+                    (keydown)="numericInputOnly($event)"
+                />
+                <mat-hint matSuffix>{{ codeInput.value.length }}/{{ codeMaxLength }}</mat-hint>
+                <button matSuffix mat-icon-button aria-label="Clear" (click)="firstFormGroup.controls.gameId.reset()">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+            <div class="button-container">
+                <button mat-raised-button class="top-button" color="accent" (click)="dialogRef.close()">Quitter</button>
+                <button mat-raised-button class="top-button" color="primary" (click)="setGameId()">Suivant</button>
+            </div>
+        </div>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+        <div [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Entrez votre nom</ng-template>
+            <mat-form-field class="join-game-form-field">
+                <mat-label>Nom</mat-label>
+                <input
+                    formControlName="playerName"
+                    matInput
+                    #nameInput
+                    type="text"
+                    [maxlength]="nameMaxLength"
+                    required
+                    (keydown.Enter)="joinGame()"
+                />
+                <mat-hint matSuffix>{{ nameInput.value.length }}/{{ nameMaxLength }}</mat-hint>
+                <button matSuffix mat-icon-button aria-label="Clear" (click)="secondFormGroup.controls.playerName.reset()">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+            <div class="button-container">
+                <button mat-raised-button class="top-button" color="accent" matStepperPrevious>Retour</button>
+                <button mat-raised-button class="top-button" color="primary" (click)="joinGame()">Joindre la partie!</button>
+            </div>
+        </div>
+    </mat-step>
+</mat-vertical-stepper>

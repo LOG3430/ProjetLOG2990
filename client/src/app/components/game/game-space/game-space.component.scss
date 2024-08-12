@@ -1,0 +1,58 @@
+.container-middle {
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.abandon-Button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.question {
+    font-size: 1.75rem;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    max-width: 60vw;
+}
+
+.point {
+    font-size: 1.5rem;
+    justify-self: center;
+}
+
+.main-content {
+    flex: 1;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+}
+
+.main-content * {
+    flex: 1;
+}
+
+.main-content .cover {
+    flex: 3;
+}
+
+.green {
+    color: green;
+    font-weight: bold;
+}
+
+.red {
+    color: red;
+    font-weight: bold;
+}
+
+.blue {
+    color: blue;
+}

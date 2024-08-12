@@ -1,0 +1,24 @@
+.results-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 88vh;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.container {
+    height: calc(100vh - 6.25rem);
+    margin: 0;
+    overflow-y: hidden;
+}

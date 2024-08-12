@@ -1,0 +1,105 @@
+.material-icons {
+    cursor: default;
+}
+
+.material-icons.action-icon {
+    cursor: pointer;
+}
+
+.material-icons.action-icon:hover {
+    color: red;
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.player-element {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.75rem;
+    background-color: rgb(226, 107, 107);
+    margin-top: 15px;
+    padding: 1vh 3vw;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+.icons-container {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.player-info {
+    flex: 1;
+    text-align: center;
+}
+
+.player-name {
+    font-weight: bold;
+}
+
+.waiting-room.animated {
+    animation: pulse 2s infinite ease-in-out;
+}
+
+.player-left {
+    background-color: black;
+    color: white;
+}
+
+.player-left .player-info {
+    text-decoration: line-through;
+}
+
+.locked-answers {
+    background-color: #2eb22e;
+}
+
+.has-interacted {
+    background-color: yellow;
+}
+
+.rank-1 {
+    border: 8px solid #ffd700;
+}
+
+.rank-2 {
+    border: 8px solid #c0c0c0;
+}
+
+.rank-3 {
+    border: 8px solid #cd7f32;
+}
+
+.rank-1-end {
+    background-color: #ffd700 !important;
+}
+
+.rank-2-end {
+    background-color: #c0c0c0 !important;
+}
+
+.rank-3-end {
+    background-color: #cd7f32 !important;
+}
+
+.neutral-color {
+    background-color: #f0f0f0;
+}
+
+.material-icons.action-icon.button-disabled,
+.material-icons.action-icon.button-disabled:hover {
+    color: grey;
+    cursor: not-allowed;
+}

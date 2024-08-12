@@ -1,0 +1,41 @@
+<mat-card>
+    <mat-card-content class="choice-container" [ngClass]="{ right: choice.isCorrect, wrong: !choice.isCorrect }">
+        <mat-icon *ngIf="isEditable" class="drag-icon">drag_indicator</mat-icon>
+        <span class="index-text">{{ choiceIndex + 1 + '.&nbsp;' }}</span>
+        <mat-form-field class="text-choice-input-container" *ngIf="isEditable">
+            <input
+                matInput
+                class="text-choice-input"
+                [(ngModel)]="choice.text"
+                (keyup)="onChangeChoice()"
+                type="string"
+                required
+                [pattern]="textNotNullOrWhitespacePattern"
+            />
+        </mat-form-field>
+        <p *ngIf="!isEditable" class="text-choice">{{ choice.text }}</p>
+
+        <mat-slide-toggle
+            *ngIf="isEditable"
+            color="right-wrong"
+            [(ngModel)]="choice.isCorrect"
+            (change)="onChangeChoice()"
+            [matTooltip]="choice.isCorrect ? 'Réponse correcte' : 'Réponse incorrecte'"
+        >
+        </mat-slide-toggle>
+
+        <div
+            *ngIf="isEditable"
+            matTooltip="Impossible d'avoir moins que 2 choix de réponse"
+            [matTooltipDisabled]="nChoices > 2"
+            [matTooltipShowDelay]="0"
+            [matTooltipHideDelay]="0"
+            disableTooltipInteractivity="true"
+            matTooltipPosition="right"
+        >
+            <button mat-icon-button color="warn" (click)="onDelete()" [disabled]="nChoices > 2 ? false : true">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+    </mat-card-content>
+</mat-card>

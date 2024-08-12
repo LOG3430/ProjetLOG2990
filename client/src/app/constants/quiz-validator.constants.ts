@@ -1,0 +1,2 @@
+export const DURATION_MINIMAL_VALUE = 10;
+export const DURATION_MAXIMAL_VALUE = 60;

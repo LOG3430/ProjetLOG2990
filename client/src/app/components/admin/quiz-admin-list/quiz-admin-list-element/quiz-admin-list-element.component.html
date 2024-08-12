@@ -1,0 +1,20 @@
+<mat-card>
+    <mat-card-content>
+        <div class="container" [ngClass]="{ 'not-visible': !quiz.visible }">
+            <p id="title">{{ quiz.title }}</p>
+            <div id="date">
+                <p>Modifié le {{ getDateMessage() }}</p>
+                <p id="time-since">{{ getTimeSinceLastModificationMessage() }}</p>
+            </div>
+            <button mat-icon-button class="action-button visibility" *ngIf="quiz.visible" (click)="toggleVisibility()">
+                <mat-icon>visibility</mat-icon>
+            </button>
+            <button mat-icon-button class="action-button visibility" *ngIf="!quiz.visible" (click)="toggleVisibility()">
+                <mat-icon>visibility_off</mat-icon>
+            </button>
+            <button mat-icon-button class="action-button" id="edit" (click)="editQuiz()"><mat-icon>edit</mat-icon></button>
+            <button mat-icon-button class="action-button" id="delete" (click)="deleteQuiz()"><mat-icon color="warn">delete</mat-icon></button>
+            <button mat-icon-button class="action-button" id="export" (click)="exportQuiz()"><mat-icon>ios_share</mat-icon></button>
+        </div>
+    </mat-card-content>
+</mat-card>

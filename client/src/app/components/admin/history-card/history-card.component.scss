@@ -1,0 +1,26 @@
+.grey {
+    color: #666;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+.line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5em;
+}
+
+mat-card {
+    padding: 1em;
+    border-radius: 5px;
+    background-color: white;
+}

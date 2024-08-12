@@ -1,0 +1,68 @@
+<mat-card class="bottom-bar">
+    <mat-card-content>
+        <div class="info-container">
+            <div>
+                <div class="score" *ngIf="!isOrganizingGame()">Score: {{ getPlayerScore() }}</div>
+                <div class="score" *ngIf="!isOrganizingGame() && !isTestingMode()">Rang: {{ getRank() }}</div>
+            </div>
+            <!--https://stackoverflow.com/questions/52288444/angular-material-progress-spinner-->
+            <div class="spinner-container" *ngIf="showSpinner()">
+                <div class="spinner-background">{{ getRemainingTime() }}s</div>
+                <mat-progress-spinner mode="determinate" [value]="getSpinnerValue()" [class]="getIsPanicOn() ? 'circle-panic' : 'circle-standard'">
+                </mat-progress-spinner>
+            </div>
+            <div class="timer-button-container" *ngIf="getIsOrganizer() && isGameStateAnswering()">
+                <button mat-icon-button (click)="handlePauseButton()" class="pause-button">
+                    <mat-icon aria-hidden="false" [fontIcon]="getIsGamePaused() ? 'play_arrow' : 'pause'"></mat-icon>
+                </button>
+
+                <div [matTooltip]="getPanicButtonTooltipText()" [matTooltipPosition]="'right'">
+                    <button
+                        mat-icon-button
+                        [disabled]="!getIsPanicModeAvailable() && !getIsPanicOn()"
+                        (click)="handlePanicButton()"
+                        [class]="getIsPanicOn() ? 'panic-button-on' : 'panic-button'"
+                    >
+                        <mat-icon aria-hidden="false" fontIcon="bolt"></mat-icon>
+                    </button>
+                </div>
+            </div>
+            <div *ngIf="isWaitingForGrading()" class="waiting-for-organizer">
+                Attribution des notes en cours
+                <span class="dot">.</span>
+                <span class="dot">.</span>
+                <span class="dot">.</span>
+            </div>
+            <div *ngIf="isWaitingForOrganizer()" class="waiting-for-organizer">
+                En attente de l'organisateur
+                <span class="dot">.</span>
+                <span class="dot">.</span>
+                <span class="dot">.</span>
+            </div>
+            <div class="button-container">
+                <button mat-raised-button *ngIf="canGoToNextQuestion() && !showEndQuestionButton()" (click)="actionButton()" class="button">
+                    Prochaine Question
+                </button>
+                <button mat-raised-button *ngIf="showEndQuestionButton()" (click)="actionButton()" class="button">Présenter les résultats</button>
+                <button
+                    mat-raised-button
+                    *ngIf="canLockChoices() && !isOrganizingGame()"
+                    (click)="handleLockChoices()"
+                    class="button"
+                    [disabled]="!hasEnoughSelectedChoices()"
+                >
+                    Confirmer les choix
+                </button>
+                <button
+                    mat-raised-button
+                    *ngIf="canLockLongAnswer() && !isOrganizingGame()"
+                    (click)="handleLockLongAnswer()"
+                    class="button"
+                    [disabled]="!hasValidLongAnswer()"
+                >
+                    Confirmer la réponse
+                </button>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

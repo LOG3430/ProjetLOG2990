@@ -1,0 +1,41 @@
+<mat-card class="chatbox" [ngClass]="{ visible: isChatVisible }">
+    <mat-card-header>
+        <strong class="player-name">{{ getPlayerName() }}</strong>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content class="chats" #scrollContainer>
+        <div *ngFor="let chat of getMessages()" class="chat">
+            {{ getChatTime(chat) + ' ' }}<strong>{{ chat.playerName + ' : ' }}</strong
+            >{{ chat.message }}
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <form (submit)="handleSendChat()">
+            <mat-form-field class="chat-input">
+                <input class = 'input'
+                    matInput
+                    #chatInput
+                    placeholder="Écrire un message"
+                    [disabled]="getIsMuted()"
+                    [(ngModel)]="newChat"
+                    [ngModelOptions]="{ standalone: true }"
+                    (keydown)="handlePropagation($event)"
+                    [maxlength]="chatMaximumLength"
+                />
+                <mat-hint matSuffix>{{ chatInput.value.length }}/{{ chatMaximumLength }}</mat-hint>
+            </mat-form-field>
+            <button mat-button type="submit" id="send-button" [disabled]="getIsMuted()"><mat-icon class = 'send-button'>send</mat-icon></button>
+        </form>
+    </mat-card-actions>
+    <button
+        mat-icon-button
+        (keydown.enter)="$event.preventDefault()"
+        class="chat-button"
+        (click)="toggleChatVisibility()"
+        [matBadgeHidden]="!getNewMessageNotification() || isChatVisible"
+        matBadge="!"
+        matBadgeColor="warn"
+    >
+        <mat-icon>chat</mat-icon>
+    </button>
+</mat-card>

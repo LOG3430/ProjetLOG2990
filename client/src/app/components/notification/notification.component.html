@@ -1,0 +1,4 @@
+<div *ngIf="notification.message" [ngClass]="notification.type" class="notification">
+    <span>{{ notification.message }}</span>
+    <button mat-icon-button (click)="hideNotification()" class="mat-ripple-disabled" id="close-icon"><mat-icon>close</mat-icon></button>
+</div>

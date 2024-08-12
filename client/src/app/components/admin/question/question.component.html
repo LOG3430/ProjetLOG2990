@@ -1,0 +1,127 @@
+<mat-expansion-panel
+    #panel
+    class="question-container"
+    [ngClass]="{ 'has-error': hasError(), 'qcm-background': isQcm(), 'qrl-background': !isQcm() }"
+    hideToggle
+>
+    <mat-expansion-panel-header>
+        <div class="header-container">
+            <mat-icon [matTooltip]="getIconTooltip()" class="question-icon">{{ getIconText() }}</mat-icon>
+            <mat-icon *ngIf="isEditable && !isInBank" class="drag-icon">drag_indicator</mat-icon>
+            <div class="unsaved-icon" *ngIf="isEditable && isInBank && question.hasChanged" matTooltip="Non sauvegardé"></div>
+            <span class="text-question-index" *ngIf="!isInBank">{{ questionIndex + 1 + '.&nbsp;' }}</span>
+            <p *ngIf="question.text.trim()" class="text-question">
+                {{ question.text }}
+            </p>
+            <p *ngIf="!question.text.trim()" class="text-question noname">Sans texte</p>
+            <div class="date" *ngIf="isEditable && isInBank">
+                <p>Modifié le {{ getDateMessage() }}</p>
+                <p class="time-since">{{ getTimeSinceLastModificationMessage() }}</p>
+            </div>
+            <mat-icon *ngIf="isEditable" [ngClass]="{ grey: !isQcm() }">{{ qcmIcon }}</mat-icon>
+            <mat-slide-toggle
+                *ngIf="isEditable"
+                class="question-type-toggle"
+                color="question-type"
+                [checked]="!isQcm()"
+                (change)="onChangeQuestionType()"
+                (click)="stopPropagation($event)"
+                [matTooltip]="isQcm() ? 'Question choix multiples' : 'Question à réponse libre'"
+            >
+            </mat-slide-toggle>
+            <mat-icon *ngIf="isEditable" [ngClass]="{ grey: isQcm() }">{{ qrlIcon }}</mat-icon>
+            <button mat-icon-button class="action-button" id="delete" (click)="emitDelete($event)" *ngIf="isEditable">
+                <mat-icon color="warn">delete</mat-icon>
+            </button>
+
+            <button
+                mat-icon-button
+                (click)="addToCurrentQuiz($event)"
+                *ngIf="isInBank && !isEditable && !panel.expanded"
+                [disabled]="!this.isValidQuestion"
+                [matTooltip]="'Ajouter la question au quiz'"
+            >
+                <mat-icon>add</mat-icon>
+            </button>
+            <button mat-icon-button class="action-button" id="expand" (click)="({})">
+                <mat-icon *ngIf="panel.expanded">expand_less</mat-icon>
+                <mat-icon *ngIf="!panel.expanded">expand_more</mat-icon>
+            </button>
+        </div>
+    </mat-expansion-panel-header>
+
+    <div id="question-specifications">
+        <mat-form-field class="text-question-input-container" *ngIf="isEditable">
+            <mat-label>Texte</mat-label>
+            <input
+                matInput
+                class="text-question-input"
+                [(ngModel)]="question.text"
+                type="string"
+                (input)="onInputChange()"
+                required
+                [pattern]="textNotNullOrWhitespacePattern"
+            />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="points-input" *ngIf="isEditable">
+            <mat-label for="points">Points</mat-label>
+            <mat-select required="true" [(ngModel)]="question.points" name="points" (selectionChange)="onInputChange()">
+                <mat-option *ngFor="let option of pointsOptions" [value]="option">{{ option }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div *ngIf="!isEditable" class="points-not-editable">Points : &nbsp;{{ question.points }}</div>
+    </div>
+
+    <p *ngIf="isQcm()">Choix de réponse</p>
+    <div
+        class="choices-container"
+        [ngClass]="{ 'invalid-state': !this.hasTrueAndFalseChoices || !this.hasAppropriateNumberChoices }"
+        cdkDropList
+        [cdkDropListDisabled]="!isEditable"
+        (cdkDropListDropped)="drop($event)"
+        *ngIf="isQcm()"
+    >
+        <app-choice
+            class="choice"
+            *ngFor="let choice of getChoices(); index as choiceIndex"
+            [choice]="choice"
+            [choiceIndex]="choiceIndex"
+            [nChoices]="getChoices().length"
+            [isEditable]="isEditable"
+            cdkDrag
+            (choiceChange)="choiceChange($event, choiceIndex)"
+            (delete)="deleteChoice(choiceIndex)"
+        ></app-choice>
+        <button mat-icon-button *ngIf="!this.hasTooManyChoicesToAddMore && isEditable" (click)="newChoice()" class="add-choice-button">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+    <div *ngIf="!this.hasTrueAndFalseChoices" class="invalid-text">Il faut au moins un choix de réponse vrai et un faux</div>
+    <div *ngIf="!this.hasAppropriateNumberChoices" class="invalid-text">Il faut entre 2 et 4 choix de réponse</div>
+    <div *ngIf="isEditable" class="buttons-container">
+        <button
+            mat-fab
+            extended
+            color="primary"
+            class="transfer-button"
+            [disabled]="!this.isValidQuestion"
+            *ngIf="!isInBank"
+            (click)="addToQuestionBank()"
+        >
+            <mat-icon>add_to_photos</mat-icon>transférer vers la banque de question
+        </button>
+        <div
+            class="save-button-container"
+            *ngIf="isInBank"
+            [matTooltip]="getSaveDisabledMessage()"
+            [matTooltipDisabled]="this.isValidQuestion && this.question.hasChanged"
+        >
+            <button mat-button (click)="saveQuestion()" [disabled]="!this.isValidQuestion || !this.question.hasChanged">
+                <mat-icon>save</mat-icon>Sauvegarder
+            </button>
+        </div>
+    </div>
+    <button mat-fab extended color="primary" (click)="addToCurrentQuiz($event)" *ngIf="isInBank && !isEditable" [disabled]="!this.isValidQuestion">
+        <mat-icon>add</mat-icon>ajouter au quiz
+    </button>
+</mat-expansion-panel>

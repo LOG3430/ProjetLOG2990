@@ -1,0 +1,31 @@
+<div
+    class="player-element"
+    [class]="getRankClass()"
+    [ngClass]="{
+        'player-left': hasLeft,
+        'locked-answers': hasLockedAnswer && !hasLeft,
+        'has-interacted': hasInteracted && !hasLockedAnswer && !hasLeft,
+        'waiting-room': !getIsInGame() && !hasInteracted && !hasLockedAnswer && !hasLeft,
+        'neutral-color': isNeutralColor()
+    }"
+>
+    <div class="icons-container" *ngIf="(hasLeft || hasInteracted) && !getIsInQuizResults()">
+        <mat-icon *ngIf="hasLeft" matTooltip="A quitté">logout</mat-icon>
+        <mat-icon *ngIf="hasLockedAnswer && !hasLeft && hasInteracted" matTooltip="A répondu">lock</mat-icon>
+        <mat-icon *ngIf="hasInteracted && !hasLeft && !hasLockedAnswer" matTooltip="A interagi">touch_app</mat-icon>
+    </div>
+
+    <div class="player-info">
+        <span *ngIf="getIsInGame()">{{ rank }}. </span>
+        <span class="player-name"> {{ name }}</span>
+        <span *ngIf="getIsInGame()">: {{ score }} points</span>
+        <span *ngIf="getIsInQuizResults()"> avec {{ bonusTimes }} bonus</span>
+    </div>
+
+    <div class="icons-container" *ngIf="showGavelIcon() || showMuteIcon()">
+        <span *ngIf="showGavelIcon()" class="material-icons action-icon" (click)="banPlayer()">gavel</span>
+        <span *ngIf="showMuteIcon()" class="material-icons action-icon" [ngClass]="{ 'button-disabled': hasLeft }" (click)="toggleMute()">{{
+            isMuted ? 'speaker_notes_off' : 'chat'
+        }}</span>
+    </div>
+</div>

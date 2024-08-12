@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+#title {
+    overflow: hidden;
+    font-size: 1.5rem;
+    width: 50%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#date {
+    flex: 2;
+}
+
+#time-since {
+    color: grey;
+    font-size: 0.8rem;
+}
+
+.container.not-visible p {
+    color: grey;
+}
+
+.container.not-visible .visibility {
+    color: grey;
+}
+
+.container.not-visible #time-since {
+    color: #bbbbbb;
+}

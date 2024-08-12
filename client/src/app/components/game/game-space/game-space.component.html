@@ -1,0 +1,20 @@
+<div class="container-middle">
+    <div class="abandon-Button">
+        <button mat-raised-button (click)="exitGame()">Abandonner le quiz</button>
+    </div>
+
+    <p class="question">
+        {{ getQuestionText() }}
+    </p>
+    <p class="point" *ngIf="showPoints()">{{ getPoints() }} points</p>
+    <p class="point" [class]="getQuestionResultClass()" *ngIf="showQuestionResult()">
+        Vous avez eu {{ getQuestionResult() }} points <span class="blue" *ngIf="isBonus()">avec un 20% bonus!</span>
+    </p>
+
+    <div class="main-content">
+        <app-histogram class="cover" *ngIf="showHistogram()"></app-histogram>
+        <app-game-choice *ngIf="isQcm() && showQuestionAnswerBox()"> </app-game-choice>
+        <app-game-qrl *ngIf="!isQcm() && showQuestionAnswerBox()"></app-game-qrl>
+        <app-game-grade *ngIf="showGrading()"></app-game-grade>
+    </div>
+</div>

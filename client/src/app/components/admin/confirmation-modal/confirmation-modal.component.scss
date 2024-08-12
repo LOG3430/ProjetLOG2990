@@ -1,0 +1,14 @@
+.mat-dialog {
+    box-shadow: 0 0 20px 10px pink;
+}
+
+mat-dialog-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    width: 40%;
+}

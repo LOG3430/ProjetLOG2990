@@ -1,0 +1,33 @@
+.container {
+    padding: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+app-history-card {
+    width: 90%;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    position: fixed;
+    bottom: 1.7rem;
+}
+
+.buttons button {
+    font-size: 1.25rem;
+}
+
+.selected {
+    background-color: #ececec;
+}
+
+.selected span {
+    font-weight: bold;
+}

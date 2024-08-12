@@ -1,0 +1,49 @@
+.container {
+    width: 30vw;
+    height: 60vh;
+    margin: auto;
+    border-radius: 3vh 0 0 3vh;
+    background-color: rgb(222, 204, 243);
+    border: 2px solid #d590e9;
+
+    transform: translate(0, 0);
+    transition: transform 0.15s ease-in-out;
+}
+
+.player-header {
+    font-size: 1.5em;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.visible.container {
+    transform: translate(-100%, 0);
+}
+
+.player-list-button {
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(-130%, -50%);
+    width: 75px;
+    height: 75px;
+    background-color: rgba(22, 22, 22, 0.1);
+}
+
+.player-list-button mat-icon {
+    font-size: 40px;
+    width: 40px;
+    height: 40px;
+}
+
+mat-card-content {
+    overflow-y: auto;
+    height: 100%;
+}

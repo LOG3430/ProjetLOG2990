@@ -1,0 +1,40 @@
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 6rem;
+}
+
+.spinner-background {
+    height: 15rem;
+    width: 15rem;
+    position: relative;
+}
+
+.spinner-background p {
+    font-size: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+}
+
+.spinner-background mat-progress-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+}
+
+.quiz-title {
+    margin: 0 5rem;
+}

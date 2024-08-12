@@ -1,0 +1,100 @@
+.choice-container {
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
+
+.choice-container mat-slide-toggle {
+    margin-left: auto;
+    margin-right: 30px;
+}
+
+.mat-mdc-slide-toggle.mat-right-wrong {
+    --mdc-switch-selected-track-color: green;
+    --mdc-switch-selected-handle-color: green;
+    --mdc-switch-selected-hover-track-color: green;
+    --mdc-switch-selected-hover-handle-color: green;
+    --mdc-switch-selected-pressed-track-color: green;
+    --mdc-switch-selected-pressed-handle-color: green;
+    --mdc-switch-selected-focus-track-color: green;
+    --mdc-switch-selected-focus-handle-color: green;
+    --mdc-switch-selected-focus-state-layer-color: green;
+    --mdc-switch-selected-hover-state-layer-color: green;
+    --mdc-switch-selected-pressed-state-layer-color: green;
+
+    --mdc-switch-unselected-track-color: red;
+    --mdc-switch-unselected-handle-color: red;
+    --mdc-switch-unselected-hover-track-color: red;
+    --mdc-switch-unselected-hover-handle-color: red;
+    --mdc-switch-unselected-pressed-track-color: red;
+    --mdc-switch-unselected-pressed-handle-color: red;
+    --mdc-switch-unselected-focus-track-color: red;
+    --mdc-switch-unselected-focus-handle-color: red;
+    --mdc-switch-unselected-focus-state-layer-color: red;
+    --mdc-switch-unselected-hover-state-layer-color: red;
+    --mdc-switch-unselected-pressed-state-layer-color: red;
+}
+
+input {
+    width: 100%;
+    text-overflow: ellipsis;
+}
+
+mat-form-field {
+    margin-top: 1rem;
+}
+
+input:focus {
+    outline: none;
+}
+
+.right-choice {
+    color: green;
+}
+
+.wrong-choice {
+    color: red;
+}
+
+.is-correct-text {
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+.index-text {
+    margin-left: 5px;
+    font-weight: bolder;
+}
+
+.drag-icon:hover {
+    cursor: grab;
+}
+
+.text-choice-input-container {
+    width: 100%;
+}
+
+::ng-deep .mdc-text-field--invalid:not(.mdc-text-field-disabled) .mdc-line-ripple::before {
+    border-bottom-width: 3px;
+}
+
+::ng-deep .mdc-text-field--filled--invalid .mdc-line-ripple::after {
+    border-bottom: 3px solid red;
+}
+
+.right {
+    border: 2px solid green;
+    background-color: rgba(0, 255, 0, 0.1);
+}
+
+.wrong {
+    border: 2px solid red;
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
+.text-choice {
+    margin: 0;
+    font-size: 1rem;
+}

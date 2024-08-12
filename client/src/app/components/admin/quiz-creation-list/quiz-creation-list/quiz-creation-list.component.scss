@@ -1,0 +1,87 @@
+.list-element-container {
+    width: 40%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.5rem;
+    overflow-y: auto;
+}
+
+.element {
+    width: 100%;
+    flex: 1;
+}
+
+.spacer {
+    flex: 1;
+}
+
+.detail {
+    padding: 0.5rem;
+    border-radius: 30px;
+    height: 70vh;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-between;
+    position: fixed;
+    right: 7vw;
+    bottom: 10vh;
+    background-color: #eee;
+    overflow-y: auto;
+}
+
+.detail h2 {
+    align-items: center;
+    align-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.detail p {
+    margin-top: 1rem;
+    font-size: 25px;
+}
+
+.detail button p {
+    margin: 0;
+}
+
+.content-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 5rem;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+    font-size: 20px;
+    padding-bottom: 55px;
+}
+
+.button-box {
+    border-radius: 5px;
+}
+
+.selected {
+    background-color: rgb(13, 212, 46);
+    color: orange;
+}
+
+p,
+h2 {
+    word-wrap: break-word;
+    margin: 0;
+}
+
+.questions-container {
+    text-align: left;
+}

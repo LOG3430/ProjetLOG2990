@@ -1,0 +1,2 @@
+export const MAX_ANSWER_LENGTH = 200;
+export const MIN_PANIC_MODE_START_DURATION = 10;

@@ -1,0 +1,21 @@
+<div id="chart">
+    <apx-chart
+        [series]="series"
+        [chart]="chart"
+        [plotOptions]="plotOptions"
+        [dataLabels]="dataLabels"
+        [xaxis]="xaxis"
+        [yaxis]="yaxis"
+        [grid]="grid"
+        [fill]="fill"
+        [legend]="legend"
+        [tooltip]="tooltip"
+        height="100%"
+        width="auto"
+    ></apx-chart>
+</div>
+<div class="label-container">
+    <p class="label" *ngFor="let text of histogramTexts" [matTooltip]="text">
+        {{ text }}
+    </p>
+</div>

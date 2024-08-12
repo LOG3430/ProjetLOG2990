@@ -1,0 +1,8 @@
+<div class="container background-animated">
+    <div class="results-container">
+        <h2>Résultats du quiz</h2>
+        <p *ngIf="showResults()">Vous avez fini {{ getRankText() }} avec {{ getScore() + ' points' }}</p>
+        <app-statistic></app-statistic>
+        <button mat-raised-button color="primary" class="button" (click)="leaveResultsPage()">Retour au menu</button>
+    </div>
+</div>

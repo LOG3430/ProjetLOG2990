@@ -1,0 +1,63 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+$purple-deep-orange-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: mat.define-palette(mat.$indigo-palette, 100, 50, 200),
+            accent: mat.define-palette(mat.$deep-orange-palette, 100, 50, 200),
+            warn: mat.define-palette(mat.$red-palette),
+        ),
+    )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($purple-deep-orange-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+body {
+    margin: 0;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.mat-dialog {
+    box-shadow: 0 0 20px 10px lightblue;
+}
+
+.background-animated {
+    height: 100vh;
+    background: radial-gradient(circle at 75% 75%, rgba(179, 0, 255, 0.5), rgba(49, 199, 219, 0.5), rgb(0 0 255 / 0%) 70.71%),
+        radial-gradient(circle at 25% 25%, rgba(250, 226, 65, 0.5), rgba(255, 93, 43, 0.5), rgb(0 255 0 / 0%) 70.71%);
+
+    background-size: 200% 200%;
+    animation: gradient 20s ease infinite;
+    justify-content: space-between;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 25% 25%;
+    }
+    25% {
+        background-position: 75% 25%;
+    }
+    50% {
+        background-position: 75% 75%;
+    }
+    75% {
+        background-position: 25% 75%;
+    }
+    100% {
+        background-position: 25% 25%;
+    }
+}

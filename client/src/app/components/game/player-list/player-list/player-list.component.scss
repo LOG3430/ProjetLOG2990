@@ -1,0 +1,18 @@
+.player-list-container {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 3vh;
+    justify-content: center;
+}
+
+.player-list-container.in-game {
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.highlighted {
+    background-color: #ececec;
+    font-weight: bold;
+  }
+

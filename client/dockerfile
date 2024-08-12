@@ -1,0 +1,22 @@
+# Stage 1: Build the Angular application
+FROM node:20 as build-stage
+
+WORKDIR /app
+
+COPY ./client/package*.json ./
+RUN npm install
+
+COPY ./client .
+COPY ./common ../common
+
+RUN npm run build --prod
+
+# Stage 2: Serve the Angular app using a static server
+FROM nginx:alpine
+
+COPY --from=build-stage /app/dist/client /usr/share/nginx/html
+
+# Expose port 4200
+EXPOSE 4200
+
+CMD ["nginx", "-g", "daemon off;"]

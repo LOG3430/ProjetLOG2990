@@ -1,0 +1,14 @@
+<mat-card>
+    <mat-card-content>
+        <div class="line">
+            <mat-card-title
+                ><span class="title">{{ gameInfo.title }}</span
+                ><span class="grey"> [{{ gameInfo.nPlayersStart }} {{ gameInfo.nPlayersStart <= 1 ? 'Joueur' : 'Joueurs' }}]</span></mat-card-title
+            >
+            <mat-card-subtitle>{{ formatDate(gameInfo.startDateTime) }} </mat-card-subtitle>
+        </div>
+        <span>
+            🏆: {{ gameInfo.winner }} <span class="grey italic">({{ gameInfo.highScore }} points)</span>
+        </span>
+    </mat-card-content>
+</mat-card>

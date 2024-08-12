@@ -1,0 +1,7 @@
+<div class="container">
+    <h1 class="quiz-title">{{getQuizTitle()}}</h1>
+    <div class="spinner-background">
+        <p>{{ getRemainingTime() }}s</p>
+        <mat-progress-spinner #spinner diameter="200" mode="determinate" [value]="getSpinnerValue()"> </mat-progress-spinner>
+    </div>
+</div>

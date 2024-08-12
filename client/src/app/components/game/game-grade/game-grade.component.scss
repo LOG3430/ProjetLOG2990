@@ -1,0 +1,76 @@
+.container {
+    margin-top: 1.5rem;
+    width: 45%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0;
+    gap: 1rem;
+    padding: 0.5rem 0 1rem 0;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 2rem;
+}
+
+.player {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    word-break: break-all;
+}
+
+.player .material-icons {
+    font-size: 40px;
+}
+
+.player mat-icon {
+    width: 46px;
+    height: 46px;
+}
+
+.answer {
+    flex: 6;
+    font-size: 1.125rem;
+    word-break: break-all;
+}
+
+.info {
+    flex: 1;
+    font-size: 1.375rem;
+}
+
+.buttons {
+    flex: 3;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+button {
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 1.875rem;
+    background: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    box-shadow: 1.5px 1.5px 0 0.2rem rgba(0, 0, 0, 0.2);
+    border: none;
+
+    transition: all 0.1s ease-in-out;
+}
+
+.button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.button:active {
+    box-shadow: 1.5px 1.5px 0 0.1rem rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,121 @@
+.bottom-bar {
+    display: flex;
+    align-items: center;
+    height: 9rem;
+    background-color: inherit;
+}
+
+.info-container {
+    width: 80vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.info-container > div {
+    flex: 1;
+}
+
+.score {
+    text-align: left;
+    width: 250px;
+    color: light;
+    font-size: 1.5rem;
+}
+
+.spinner-container {
+    position: relative;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+}
+.spinner-background {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    overflow: hidden;
+    border-color: rgba(103, 58, 183, 0.12);
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 10px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.button {
+    width: 10rem;
+}
+
+.waiting-for-organizer {
+    font-size: 1.5rem;
+}
+
+.dot {
+    font-size: 3rem;
+    animation: show 2.1s infinite;
+}
+
+@keyframes show {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.dot:nth-child(2) {
+    animation-delay: 0.7s;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 1.4s;
+}
+
+.panic-button-on {
+    background-color: red;
+}
+
+.timer-button-container {
+    width: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+@keyframes bounce {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-30px);
+    }
+    60% {
+        transform: translateY(-15px);
+    }
+}
+
+.circle-panic {
+    display: inline-block;
+    animation: bounce 1s ease-out 1;
+}
+
+.circle-panic::ng-deep circle {
+    stroke: red !important;
+}
+.circle-standard::ng-deep circle {
+    stroke: lightblue !important;
+}

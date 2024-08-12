@@ -1,0 +1,81 @@
+<mat-card class="container">
+    <mat-card-content>
+        <header>
+            <div class="title-container">
+                <div class="unsaved-icon" *ngIf="data.hasChanged" matTooltip="Non sauvegardé"></div>
+                <mat-form-field>
+                    <mat-label>Titre</mat-label>
+                    <input
+                        matInput
+                        [(ngModel)]="data.title"
+                        (input)="onInputChange()"
+                        type="string"
+                        required
+                        [pattern]="textNotNullOrWhitespacePattern"
+                        class="text-title"
+                    />
+                </mat-form-field>
+            </div>
+
+            <mat-form-field class="description">
+                <mat-label for="description">Description</mat-label>
+                <textarea
+                    matInput
+                    [(ngModel)]="data.description"
+                    (input)="onInputChange()"
+                    name="description"
+                    type="text"
+                    required
+                    [pattern]="textNotNullOrWhitespacePattern"
+                ></textarea>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="time-input">
+                <mat-label for="time">Temps par question</mat-label>
+                <input
+                    matInput
+                    type="number"
+                    required="true"
+                    [(ngModel)]="data.duration"
+                    (input)="onInputChange()"
+                    name="time"
+                    min="10"
+                    max="60"
+                    placeholder="Temps par question"
+                />
+            </mat-form-field>
+        </header>
+
+        <mat-accordion cdkDropList multi="true" (cdkDropListDropped)="drop($event)" class="question-container">
+            <ng-container *ngFor="let question of data.questions; index as i">
+                <app-question
+                    [isInNewQuiz]="isInNewQuiz"
+                    [question]="question"
+                    [questionIndex]="i"
+                    (removeQuestionSignal)="removeQuestion(i)"
+                    (changeQuestionSignal)="onInputChange()"
+                    [isUniqueQuestion]="isQuestionUnique(i)"
+                    cdkDrag
+                ></app-question>
+            </ng-container>
+        </mat-accordion>
+        <div class="add-buttons">
+            <button mat-raised-button color="primary" (click)="addQuestion()" [ngClass]="data.questions.length > 0 ? null : 'not-enough-questions'">
+                <mat-icon>add</mat-icon>Nouvelle question
+            </button>
+            <button
+                mat-raised-button
+                color="primary"
+                (click)="openQuestionBank()"
+                [ngClass]="data.questions.length > 0 ? null : 'not-enough-questions'"
+            >
+                <mat-icon>list</mat-icon>Banque de questions
+            </button>
+        </div>
+        <div class="save-button-container" [matTooltip]="getSaveDisabledMessage()" [matTooltipDisabled]="isValidQuiz() && this.data.hasChanged">
+            <button (click)="save()" mat-raised-button id="save-button" [disabled]="!isValidQuiz() || !data.hasChanged">
+                <mat-icon> save </mat-icon>Sauvegarder
+            </button>
+        </div>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,22 @@
+<div class="container">
+    <app-history-card *ngFor="let game of getHistory()" [gameInfo]="game"></app-history-card>
+
+    <mat-menu #menu="matMenu" yPosition="above">
+        <button
+            *ngFor="let sortOption of sortOptions; index as i"
+            mat-menu-item
+            (click)="sortOption.sortingFunction($event)"
+            [ngClass]="selectedSortingIndex === i ? 'selected' : ''"
+        >
+            <mat-icon>{{ sortOption.icon }}</mat-icon
+            ><span>{{ sortOption.text }}</span>
+        </button>
+    </mat-menu>
+
+    <div class="buttons">
+        <button mat-fab extended (click)="openConfirmationModal()" color="warn" [disabled]="!canDelete()">
+            <mat-icon>delete</mat-icon>Supprimer l'historique
+        </button>
+        <button mat-fab extended [matMenuTriggerFor]="menu" color="primary"><mat-icon>sort</mat-icon>Trier l'historique</button>
+    </div>
+</div>

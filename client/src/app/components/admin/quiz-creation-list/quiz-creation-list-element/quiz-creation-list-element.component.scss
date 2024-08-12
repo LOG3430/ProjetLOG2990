@@ -1,0 +1,21 @@
+.quiz-list-element {
+    width: 100%;
+    border-radius: 5px;
+    background-color: #eee;
+    font-size: 1.5rem;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.quiz-list-element:hover {
+    background-color: #ddd;
+}
+
+.selected {
+    background-color: #ccc;
+}
+
+p {
+    margin: 0;
+    word-wrap: break-word;
+}

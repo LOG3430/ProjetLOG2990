@@ -1,0 +1,93 @@
+.chatbox {
+    width: 30vw;
+    height: 60vh;
+    margin: auto;
+    border-radius: 0 3vh 3vh 0;
+    background-color: rgb(222, 204, 243);
+    border: 2px solid #d590e9;
+
+    transform: translate(0, 0);
+    transition: transform 0.15s ease-in-out;
+}
+
+.visible.chatbox {
+    transform: translate(100%, 0);
+}
+
+.chat-button {
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(110%, -50%);
+    width: 75px;
+    height: 75px;
+    background-color: rgba(22, 22, 22, 0.1);
+}
+
+.chat-button mat-icon {
+    font-size: 40px;
+    width: 40px;
+    height: 40px;
+}
+
+.chats {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.chats::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chats::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.chats::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.player-name {
+    font-size: 1.5em;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.chat {
+    overflow-wrap: break-word;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.chat-input {
+    height: 100%;
+    width: 100%;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#send-button {
+    position: relative;
+    bottom: 10px;
+}
+
+.send-button:disabled:hover {
+    cursor: not-allowed;
+}
+
+.input:disabled:hover {
+    cursor: not-allowed;
+}
