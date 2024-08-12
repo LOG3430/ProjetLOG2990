@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AuthController } from './controllers/auth/auth.controller';
@@ -22,6 +22,7 @@ import { LoggingService } from './services/logging/logging.service';
 import { QuizService } from './services/quiz/quiz.service';
 import { RoomService } from './services/room/room.service';
 import { ValidationService } from './services/validation/validation.service';
+import { LoggerMiddleware } from './middleware/logger.middleware';
 
 @Module({
     imports: [
@@ -49,4 +50,9 @@ import { ValidationService } from './services/validation/validation.service';
     ],
 })
 export class AppModule {
+    configure(consumer: MiddlewareConsumer) {
+        consumer
+          .apply(LoggerMiddleware)
+          .forRoutes('*');
+      }
 }
