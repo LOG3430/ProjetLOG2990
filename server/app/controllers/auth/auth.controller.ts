@@ -1,16 +1,15 @@
 import { AuthService } from '@app/services/auth/auth.service';
-import { LoggingService } from '@app/services/logging/logging.service';
 import { AuthResDto } from '@common/http/auth.dto';
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Logger, Post } from '@nestjs/common';
 @Controller('auth')
 export class AuthController {
-    constructor(
-        private readonly authService: AuthService,
-        private readonly loggingService: LoggingService,
-    ) {}
+    private readonly logger = new Logger(AuthController.name);
+
+    constructor(private readonly authService: AuthService) {}
+
     @Post()
     auth(@Body('password') password: string): AuthResDto {
-        this.loggingService.log('Auth request received');
+        this.logger.log('Auth request received');
         return { isValid: this.authService.isValidPassword(password) };
     }
 }

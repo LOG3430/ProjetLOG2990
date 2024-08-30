@@ -7,6 +7,8 @@ import { QuestionDatabaseController } from './controllers/database/questions/que
 import { QuizDatabaseController } from './controllers/database/quiz/quiz.controller';
 import { ValidationController } from './controllers/validation/validation.controller';
 import { GameSocketGateway } from './gateways/websockets.gateway';
+import { ConditionalCrashMiddleware } from './middleware/crashing.middleware';
+import { LoggerMiddleware } from './middleware/logger.middleware';
 import { HistoryDto, historySchema } from './model/schema/history.schema';
 import { QcmDto, qcmSchema } from './model/schema/qcm.schema';
 import { QuizDto, quizSchema } from './model/schema/quiz.schema';
@@ -18,11 +20,9 @@ import { QuestionDatabaseService } from './services/database/question/question.s
 import { QuizDatabaseService } from './services/database/quiz/quiz.service';
 import { GameStateService } from './services/game-state/game-state.service';
 import { GameService } from './services/game/game.service';
-import { LoggingService } from './services/logging/logging.service';
 import { QuizService } from './services/quiz/quiz.service';
 import { RoomService } from './services/room/room.service';
 import { ValidationService } from './services/validation/validation.service';
-import { LoggerMiddleware } from './middleware/logger.middleware';
 
 @Module({
     imports: [
@@ -46,13 +46,11 @@ import { LoggerMiddleware } from './middleware/logger.middleware';
         GameStateService,
         QuizService,
         HistoryService,
-        LoggingService,
     ],
 })
 export class AppModule {
     configure(consumer: MiddlewareConsumer) {
-        consumer
-          .apply(LoggerMiddleware)
-          .forRoutes('*');
-      }
+        consumer.apply(LoggerMiddleware).forRoutes('*');
+        consumer.apply(ConditionalCrashMiddleware).forRoutes('*');
+    }
 }
