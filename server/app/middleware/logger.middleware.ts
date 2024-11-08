@@ -12,7 +12,7 @@ export class LoggerMiddleware implements NestMiddleware {
   }
 
   use(req: Request, res: Response, next: NextFunction) {
-    this.logger.info(req.originalUrl)
+    this.logger.info(req.originalUrl, {'method' : req.method})
     next();
   }
 }
