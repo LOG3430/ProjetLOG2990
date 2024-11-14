@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class AuthService {
-    secretPassword = 'log2990-203';
+    secretPassword = 'admin';
 
     isValidPassword(password: string): boolean {
         return password === this.secretPassword;
